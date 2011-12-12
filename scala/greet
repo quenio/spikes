@@ -1,0 +1,19 @@
+#!/usr/bin/env scala
+!#
+
+println(C.c)
+
+object C {
+  def c = args.getClass
+}
+
+
+/*
+var name = if (args.length == 1) args(0) else "World"
+
+println("Hello, " + name + "!")
+
+Thread.sleep(2000)
+
+println("Goodbye!")
+*/

@@ -1,0 +1,26 @@
+#!/usr/bin/env scala
+!#
+
+abstract class Monoid[T] {
+  def unit: T
+  def add(a: T, b: T): T
+}
+
+implicit object StringMonoid extends Monoid[String] {
+  def unit = ""
+  def add(a: String, b: String) = a.concat(b)
+}
+
+implicit object IntMonoid extends Monoid[Int] {
+  def unit = 0
+  def add(a: Int, b: Int) = a + b
+}
+
+def sum[T](l: List[T])(implicit m: Monoid[T]): T = if (l.isEmpty) m.unit else m.add(l.head, sum(l.tail))
+
+println(sum(List("a", "b", "c")))
+println(sum(List(1, 2, 3)))
+
+
+
+
